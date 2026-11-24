@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trattoria Bella Vita — Cucina Italiana</title>
+  <meta name="description" content="Trattoria Bella Vita: massas artesanais, vinhos selecionados e uma experiência gastronômica italiana premium." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --wine: #6f1625;
+      --wine-dark: #3b0b14;
+      --beige: #f4ead8;
+      --cream: #fffaf1;
+      --olive: #596b3a;
+      --gold: #c9a45c;
+      --dark: #15100d;
+      --text: #332822;
+      --muted: #7a6b5e;
+      --white: #ffffff;
+      --shadow: 0 24px 70px rgba(32, 18, 10, 0.16);
+      --radius: 26px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 16px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      line-height: 0.98;
+      color: var(--dark);
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 7.5rem);
+      color: var(--white);
+      letter-spacing: -0.04em;
+      max-width: 920px;
+    }
+
+    h2 {
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      letter-spacing: -0.035em;
+      margin-bottom: 22px;
+    }
+
+    h3 {
+      font-size: 1.9rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.35s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), #f0d58b);
+      color: #301d0b;
+      box-shadow: 0 16px 40px rgba(201, 164, 92, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 50px rgba(201, 164, 92, 0.42);
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,0.5);
+      color: var(--white);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.18);
+      transform: translateY(-3px);
+    }
+
+    .btn-wine {
+      background: var(--wine);
+      color: var(--white);
+      box-shadow: 0 18px 45px rgba(111, 22, 37, 0.24);
+    }
+
+    .btn-wine:hover {
+      background: var(--wine-dark);
+      transform: translateY(-3px);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(21, 16, 13, 0.9);
+      backdrop-filter: blur(16px);
+      padding: 12px 0;
+      box-shadow: 0 16px 50px rgba(0,0,0,0.22);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .logo strong {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.8rem;
+      letter-spacing: -0.04em;
+    }
+
+    .logo span {
+      color: var(--gold);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      margin-top: 4px;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: rgba(255,255,255,0.86);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .menu a {
+      transition: 0.25s ease;
+    }
+
+    .menu a:hover {
+      color: var(--gold);
+    }
+
+    .mobile-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+      font-size: 1.4rem;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: linear-gradient(rgba(21, 10, 6, 0.52), rgba(21, 10, 6, 0.72)), url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=2200&q=85") center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 180px;
+      background: linear-gradient(transparent, var(--cream));
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding-top: 80px;
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.86);
+      max-width: 670px;
+      font-size: 1.2rem;
+      margin: 26px 0 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 42px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .badge {
+      padding: 10px 16px;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.88);
+      border-radius: 999px;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.08);
+      font-size: 0.88rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .image-card {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      min-height: 520px;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      transition: 0.7s ease;
+    }
+
+    .image-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .floating-note {
+      position: absolute;
+      left: 28px;
+      bottom: 28px;
+      right: 28px;
+      padding: 24px;
+      border-radius: 22px;
+      background: rgba(255, 250, 241, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(201,164,92,0.38);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+    }
+
+    .floating-note strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.6rem;
+      color: var(--wine);
+      margin-bottom: 4px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 38px;
+    }
+
+    .feature-card, .menu-card, .review-card, .info-card {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(201,164,92,0.22);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(38, 26, 18, 0.08);
+      transition: 0.35s ease;
+    }
+
+    .feature-card:hover, .menu-card:hover, .review-card:hover, .info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 70px rgba(38, 26, 18, 0.14);
+    }
+
+    .feature-card .icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: rgba(111, 22, 37, 0.1);
+      color: var(--wine);
+      font-size: 1.3rem;
+      margin-bottom: 18px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 42px;
+    }
+
+    .section-head p {
+      max-width: 560px;
+    }
+
+    .menu-section {
+      background: linear-gradient(180deg, var(--beige), var(--cream));
+    }
+
+    .menu-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 34px;
+    }
+
+    .tab {
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(111,22,37,0.18);
+      background: rgba(255,255,255,0.66);
+      color: var(--wine);
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .tab.active, .tab:hover {
+      background: var(--wine);
+      color: var(--white);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .menu-card {
+      padding: 0;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .menu-img {
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .menu-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.55s ease;
+    }
+
+    .menu-card:hover .menu-img img {
+      transform: scale(1.08);
+    }
+
+    .menu-body {
+      padding: 24px;
+    }
+
+    .menu-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: var(--wine);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 230px;
+      gap: 18px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 16px 45px rgba(38, 26, 18, 0.12);
+    }
+
+    .gallery-item.big {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.6s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-item span {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      color: var(--white);
+      background: rgba(0,0,0,0.36);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .reviews {
+      background: var(--wine-dark);
+      color: var(--white);
+    }
+
+    .reviews h2, .reviews h3 {
+      color: var(--white);
+    }
+
+    .reviews p {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review-card {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(201,164,92,0.28);
+      color: var(--white);
+      box-shadow: none;
+    }
+
+    .stars {
+      color: var(--gold);
+      letter-spacing: 3px;
+      margin-bottom: 18px;
+    }
+
+    .review-user {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--beige));
+      display: grid;
+      place-items: center;
+      color: var(--wine-dark);
+      font-weight: 900;
+    }
+
+    .reservation {
+      background: linear-gradient(135deg, rgba(244,234,216,0.9), rgba(255,250,241,0.96));
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 34px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(201,164,92,0.24);
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      color: var(--wine-dark);
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(51,40,34,0.14);
+      background: #fffaf5;
+      color: var(--text);
+      font: inherit;
+      outline: none;
+      transition: 0.25s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(201,164,92,0.14);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .form-note {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .map-card {
+      min-height: 430px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      background: linear-gradient(135deg, rgba(111,22,37,0.9), rgba(89,107,58,0.78)), url("https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1600&q=80") center/cover;
+    }
+
+    .map-pin {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--white);
+      border-radius: 24px;
+      padding: 24px;
+      width: min(340px, calc(100% - 40px));
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+    }
+
+    .map-pin strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.8rem;
+      color: var(--wine);
+      margin-bottom: 8px;
+    }
+
+    footer {
+      background: #120d0b;
+      color: var(--white);
+      padding: 70px 0 26px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 34px;
+      margin-bottom: 46px;
+    }
+
+    footer h4 {
+      color: var(--gold);
+      margin-bottom: 18px;
+      font-size: 1rem;
+    }
+
+    footer p, footer a, footer li {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.88rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 999;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #25d366;
+      color: var(--white);
+      font-size: 1.7rem;
+      box-shadow: 0 18px 45px rgba(37,211,102,0.36);
+      transition: 0.3s ease;
+    }
+
+    .whatsapp:hover {
+      transform: translateY(-5px) scale(1.04);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: 0.75s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(26px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1050px) {
+      .menu {
+        position: fixed;
+        top: 74px;
+        right: 18px;
+        left: 18px;
+        flex-direction: column;
+        align-items: stretch;
+        background: rgba(21, 16, 13, 0.96);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 24px;
+        padding: 22px;
+        transform: translateY(-14px);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s ease;
+      }
+
+      .menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .split, .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features-grid, .menu-grid, .reviews-grid, .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .section {
+        padding: 78px 0;
+      }
+
+      .hero {
+        min-height: 920px;
+      }
+
+      .hero-actions, .badges {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .features-grid, .menu-grid, .reviews-grid, .footer-grid, .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item.big {
+        grid-row: span 1;
+      }
+
+      form {
+        grid-template-columns: 1fr;
+        padding: 24px;
+      }
+
+      .image-card {
+        min-height: 390px;
+      }
+
+      .copyright {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container nav">
+      <a href="#inicio" class="logo" aria-label="Trattoria Bella Vita">
+        <strong>Trattoria Bella Vita</strong>
+        <span>Cucina Italiana</span>
+      </a>
+
+      <nav class="menu" id="menu">
+        <a href="#inicio">Início</a>
+        <a href="#quem-somos">Quem Somos</a>
+        <a href="#ambiente">Ambiente</a>
+        <a href="#cardapio">Cardápio</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#reserva">Reserva</a>
+        <a href="#localizacao">Localização</a>
+      </nav>
+
+      <a class="btn btn-primary desktop-reserve" href="#reserva">Reservar Mesa</a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-content">
+        <span class="eyebrow">Experiência italiana premium</span>
+        <h1>O verdadeiro sabor da Itália no coração da cidade</h1>
+        <p>Massas artesanais, vinhos selecionados e uma experiência gastronômica inesquecível em um ambiente elegante, acolhedor e feito para celebrar bons momentos.</p>
+        <div class="hero-actions">
+          <a href="#cardapio" class="btn btn-primary">Ver Cardápio</a>
+          <a href="#reserva" class="btn btn-outline">Reservar Mesa</a>
+        </div>
+        <div class="badges">
+          <span class="badge">🍝 Massas Artesanais</span>
+          <span class="badge">🍷 Vinhos Selecionados</span>
+          <span class="badge">✨ Ambiente Premium</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quem-somos">
+      <div class="container split">
+        <div class="reveal">
+          <span class="eyebrow">Quem Somos</span>
+          <h2>Tradição, sabor e elegância em cada detalhe</h2>
+          <p>Somos um restaurante italiano criado para oferecer uma experiência autêntica, unindo receitas tradicionais, ingredientes selecionados e um ambiente acolhedor. Cada prato é preparado com atenção aos detalhes, valorizando o sabor, a apresentação e a tradição da culinária italiana.</p>
+          <br />
+          <p>Da massa fresca ao vinho ideal para acompanhar sua noite, tudo é pensado para transformar uma refeição em uma memória especial.</p>
+        </div>
+
+        <div class="image-card reveal">
+          <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1400&q=85" alt="Chef preparando prato italiano" />
+          <div class="floating-note">
+            <strong>Feito à mão</strong>
+            <p>Receitas clássicas, ingredientes nobres e preparo artesanal.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ambiente">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Sobre o lugar</span>
+            <h2>Um ambiente pensado para momentos especiais</h2>
+          </div>
+          <p>Espaço aconchegante, iluminação quente, decoração inspirada na Itália e mesas elegantes para casais, famílias, encontros e comemorações.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card reveal"><div class="icon">🕯️</div><h3>Iluminação quente</h3><p>Uma atmosfera intimista e sofisticada para noites memoráveis.</p></div>
+          <div class="feature-card reveal"><div class="icon">🍷</div><h3>Adega selecionada</h3><p>Vinhos especiais para harmonizar com massas, risotos e sobremesas.</p></div>
+          <div class="feature-card reveal"><div class="icon">🍽️</div><h3>Mesas elegantes</h3><p>Composição refinada para encontros, comemorações e jantares românticos.</p></div>
+          <div class="feature-card reveal"><div class="icon">🇮🇹</div><h3>Inspiração italiana</h3><p>Decoração clássica com detalhes contemporâneos e acolhedores.</p></div>
+          <div class="feature-card reveal"><div class="icon">👨‍👩‍👧</div><h3>Para todos</h3><p>Ideal para casais, famílias, amigos e eventos reservados.</p></div>
+          <div class="feature-card reveal"><div class="icon">📸</div><h3>Espaços fotogênicos</h3><p>Salão, fachada, pratos e adega preparados para encantar visualmente.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section menu-section" id="cardapio">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Cardápio</span>
+            <h2>Clássicos italianos com apresentação premium</h2>
+          </div>
+          <p>Uma seleção especial de entradas, massas, pizzas, risotos, sobremesas e vinhos para uma experiência completa.</p>
+        </div>
+
+        <div class="menu-tabs reveal">
+          <button class="tab active" data-filter="all">Todos</button>
+          <button class="tab" data-filter="entradas">Entradas</button>
+          <button class="tab" data-filter="massas">Massas</button>
+          <button class="tab" data-filter="pizzas">Pizzas</button>
+          <button class="tab" data-filter="risotos">Risotos</button>
+          <button class="tab" data-filter="sobremesas">Sobremesas</button>
+          <button class="tab" data-filter="bebidas">Vinhos e Bebidas</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="galeria">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Galeria</span>
+            <h2>Detalhes que despertam o apetite</h2>
+          </div>
+          <p>Imagens ilustrativas para transmitir a experiência visual do restaurante, do salão aos pratos preparados na cozinha.</p>
+        </div>
+
+        <div class="gallery-grid reveal">
+          <div class="gallery-item"><img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85" alt="Interior do salão" /><span>Salão</span></div>
+          <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529563021893-cc83c992d75d?auto=format&fit=crop&w=1200&q=85" alt="Mesas decoradas" /><span>Mesas</span></div>
+          <div class="gallery-item"><img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=1200&q=85" alt="Prato de massa" /><span>Massas</span></div>
+          <div class="gallery-item big"><img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1400&q=85" alt="Vinhos" /><span>Vinhos</span></div>
+          <div class="gallery-item"><img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=1200&q=85" alt="Sobremesa italiana" /><span>Sobremesas</span></div>
+          <div class="gallery-item"><img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=85" alt="Adega sofisticada italiana" /><span>Adega Exclusiva</span></div>
+          <div class="gallery-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=85" alt="Mesa sofisticada de restaurante italiano" /><span>Experiência Premium</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reviews" id="avaliacoes">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Avaliações</span>
+            <h2>O que nossos clientes dizem</h2>
+          </div>
+          <p>Depoimentos fictícios usados como modelo visual. Substitua depois por avaliações reais dos seus clientes.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card reveal"><div class="stars">★★★★☆</div><p>“Ambiente muito agradável, comida excelente e atendimento impecável.”</p><div class="review-user"><div class="avatar">M</div><div><strong>Marina Duarte</strong><p>Cliente</p></div></div></div>
+          <div class="review-card reveal"><div class="stars">★★★★☆</div><p>“A massa estava perfeita, o lugar é lindo e muito aconchegante.”</p><div class="review-user"><div class="avatar">R</div><div><strong>Rafael Moretti</strong><p>Cliente</p></div></div></div>
+          <div class="review-card reveal"><div class="stars">★★★★☆</div><p>“Ótima experiência, pratos bem servidos e sabor autêntico italiano.”</p><div class="review-user"><div class="avatar">C</div><div><strong>Clara Ferraz</strong><p>Cliente</p></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reservation" id="reserva">
+      <div class="container split">
+        <div class="reveal">
+          <span class="eyebrow">Reserva de mesa</span>
+          <h2>Garanta sua experiência na Bella Vita</h2>
+          <p>Preencha o formulário e nossa equipe entrará em contato para confirmar sua reserva com atenção e agilidade.</p>
+          <br />
+          <div class="info-card">
+            <h3>Atendimento especial</h3>
+            <p>Para comemorações, aniversários e jantares românticos, adicione uma observação no formulário.</p>
+          </div>
+        </div>
+
+        <form class="reveal" id="reservationForm">
+          <div class="field"><label for="name">Nome</label><input type="text" id="name" placeholder="Seu nome completo" required /></div>
+          <div class="field"><label for="phone">Telefone</label><input type="tel" id="phone" placeholder="(11) 99999-9999" required /></div>
+          <div class="field"><label for="date">Data</label><input type="date" id="date" required /></div>
+          <div class="field"><label for="time">Horário</label><input type="time" id="time" required /></div>
+          <div class="field full"><label for="people">Quantidade de pessoas</label><select id="people" required><option value="">Selecione</option><option>2 pessoas</option><option>3 pessoas</option><option>4 pessoas</option><option>5 pessoas</option><option>6 ou mais pessoas</option></select></div>
+          <div class="field full"><label for="note">Observação</label><textarea id="note" placeholder="Ex: aniversário, mesa reservada, preferência de horário..."></textarea></div>
+          <p class="form-note">Após o envio, nossa equipe entrará em contato para confirmar sua reserva.</p>
+          <button type="submit" class="btn btn-wine field full">Solicitar Reserva</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="localizacao">
+      <div class="container location-grid">
+        <div class="reveal">
+          <span class="eyebrow">Localização</span>
+          <h2>Fácil acesso, ambiente reservado e acolhedor</h2>
+          <p>Estamos localizados em uma região de fácil acesso, com ambiente reservado e acolhedor.</p>
+          <br />
+          <div class="info-card">
+            <h3>Endereço</h3>
+            <p>Rua Roma, 248 — Centro, São Paulo - SP</p>
+            <br />
+            <a class="btn btn-wine" href="#reserva">Reservar Mesa</a>
+          </div>
+        </div>
+
+        <div class="map-card reveal">
+          <div class="map-pin">
+            <strong>Trattoria Bella Vita</strong>
+            <p>Rua Roma, 248 — Centro, São Paulo - SP</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#inicio" class="logo">
+            <strong>Trattoria Bella Vita</strong>
+            <span>Cucina Italiana</span>
+          </a>
+          <br />
+          <p>Massas artesanais, vinhos selecionados e uma experiência gastronômica italiana premium.</p>
+        </div>
+        <div>
+          <h4>Horário</h4>
+          <p>Terça a Quinta: 18h às 23h</p>
+          <p>Sexta e Sábado: 18h às 00h</p>
+          <p>Domingo: 12h às 16h</p>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <p>Rua Roma, 248 — Centro</p>
+          <p>São Paulo - SP</p>
+          <p>WhatsApp: (11) 99999-2026</p>
+          <p>Instagram: @trattoriabellavita</p>
+        </div>
+        <div>
+          <h4>Links rápidos</h4>
+          <ul>
+            <li><a href="#quem-somos">Quem Somos</a></li>
+            <li><a href="#cardapio">Cardápio</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#reserva">Reserva</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© 2026 Trattoria Bella Vita. Todos os direitos reservados.</span>
+        <span>Site modelo premium para restaurante italiano.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/5511999992026" target="_blank" aria-label="WhatsApp">☘</a>
+
+  <script>
+    const header = document.getElementById("header");
+    const menu = document.getElementById("menu");
+    const mobileToggle = document.getElementById("mobileToggle");
+
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 40);
+    });
+
+    mobileToggle.addEventListener("click", () => {
+      menu.classList.toggle("open");
+      mobileToggle.textContent = menu.classList.contains("open") ? "×" : "☰";
+    });
+
+    document.querySelectorAll(".menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("open");
+        mobileToggle.textContent = "☰";
+      });
+    });
+
+    const items = [
+      {cat:"entradas", name:"Bruschetta Tradicional", desc:"Pão italiano, tomate fresco, manjericão e azeite extra virgem.", price:"R$ 32,00", img:"https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=900&q=85"},
+      {cat:"massas", name:"Fettuccine Alfredo", desc:"Massa artesanal com molho cremoso de parmesão.", price:"R$ 58,00", img:"https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=900&q=85"},
+      {cat:"massas", name:"Spaghetti Carbonara", desc:"Pancetta, ovos, parmesão e pimenta-do-reino.", price:"R$ 62,00", img:"https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=900&q=85"},
+      {cat:"massas", name:"Lasagna alla Bolognese", desc:"Camadas de massa, ragu bolonhesa e queijo gratinado.", price:"R$ 68,00", img:"https://images.unsplash.com/photo-1619895092538-128341789043?auto=format&fit=crop&w=900&q=85"},
+      {cat:"risotos", name:"Risotto ai Funghi", desc:"Arroz arbóreo com mix de cogumelos e parmesão.", price:"R$ 72,00", img:"https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?auto=format&fit=crop&w=900&q=85"},
+      {cat:"pizzas", name:"Pizza Margherita", desc:"Molho de tomate, mozzarella, manjericão e azeite.", price:"R$ 54,00", img:"https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=900&q=85"},
+      {cat:"sobremesas", name:"Tiramisù", desc:"Creme mascarpone, café e cacau.", price:"R$ 34,00", img:"https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=900&q=85"},
+      {cat:"sobremesas", name:"Panna Cotta", desc:"Creme italiano com calda de frutas vermelhas.", price:"R$ 31,00", img:"https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85"},
+      {cat:"bebidas", name:"Vinho Tinto Italiano", desc:"Taça selecionada da casa para harmonização.", price:"R$ 38,00", img:"https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&q=85"}
+    ];
+
+    const menuGrid = document.getElementById("menuGrid");
+    const tabs = document.querySelectorAll(".tab");
+
+    function renderMenu(filter = "all") {
+      menuGrid.innerHTML = items
+        .filter(item => filter === "all" || item.cat === filter)
+        .map(item => `
+          <article class="menu-card reveal show" data-cat="${item.cat}">
+            <div class="menu-img"><img src="${item.img}" alt="${item.name}"></div>
+            <div class="menu-body">
+              <div class="menu-title">
+                <h3>${item.name}</h3>
+                <span class="price">${item.price}</span>
+              </div>
+              <p>${item.desc}</p>
+            </div>
+          </article>
+        `).join("");
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        renderMenu(tab.dataset.filter);
+      });
+    });
+
+    renderMenu();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    document.getElementById("reservationForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      alert(`Obrigado, ${name || "cliente"}! Sua solicitação de reserva foi recebida. Nossa equipe entrará em contato para confirmar.`);
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
